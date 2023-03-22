@@ -1,0 +1,74 @@
+extends base
+block navbars
+    - let aUserDisplayName =  "Guest"
+    #navbar-vue-app
+        v-bootstrap-navbar(
+            ref="navbar",
+            title=websiteName,
+            logo="public/img/favicon.ico"
+            home-url=homePageUrl,
+            current-tab-id=curNav,
+            is-debug=(isDebugMode ? "true" : "false"),
+            is-authenticated="false",
+            username=aUserDisplayName,
+            v-bind:tabs="tabs",
+            @request-logout="handleLogout"
+        )
+            v-login(async=true custom-message="" @loggedin="refreshAfterLogin")
+    script.
+        var vNavbar = new Vue({
+            el: '#navbar-vue-app',
+            data: {
+                // Custom data to handle login/logout
+                notifs:[],
+                userToken: "#{userToken}",
+                // Data used in navbar
+                tabs: [
+                    {
+                        url: '/home',
+                        id: "home",
+                        icon: "home",
+                        text: "Home"
+                    }, {
+                        url: '/api-doc/?url=/public/doc/my-swagger-doc.json',
+                        id: "doc",
+                        icon: "info-sign",
+                        text: "API",
+                        openInNewTab: true
+                    },
+                    /* Sample of unused features
+                    {
+                        url: '/home',
+                        id: "pah",
+                        icon: "home",
+                        text: "Phase",
+                        dropdownList: [
+                            {text:"option1", url:"/option-1"},
+                            {text:"option2", url:"/option-2"},
+                            {text:"option3", url:"/option-3"},
+                        ]
+                    },
+                    {
+                        url: '/home',
+                        id: "admin",
+                        icon: "home",
+                        text: "Admin",
+                        authenticatedOnly: true
+                    },*/
+                ]
+            },
+            methods: {
+                isUserAuthenticated: function() {
+                    return false
+                },
+                refreshAfterLogin: function () {
+                    vCommon.utils.addSimpleNotif("Logged in successfully. Reloading page ...", 'success');
+                    setTimeout(()=>{location.href = location.href.split('#')[0]}, 500);
+                },
+                handleLogout: function () {
+                    vCommon.utils.addSimpleNotif("Logged out successfully. Reloading page ...", 'success');
+                    setTimeout(()=>{location.href = location.href.split('#')[0]}, 500);
+                },
+            }
+
+        })

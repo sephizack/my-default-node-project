@@ -1,0 +1,84 @@
+block config
+doctype
+html( lang="en" )
+    head
+        title=title
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        base(href="/")
+        //- Bootswatch Theme
+        link(href="public/css/bootstrap.min.css", rel='stylesheet', type='text/css')
+        link(href="public/css/animate.css", rel="stylesheet")
+        link(href="public/css/global.css", rel="stylesheet")
+        link(href="public/css/mytoolcolors.css", rel="stylesheet")
+        link(href="public/img/favicon.ico", rel="icon")
+        
+        style.
+            html, body {height: 100%;background:#F0F0F0;}
+            body {padding-top:20px;padding-bottom:0 !important}
+            .footer {
+                height:4em;
+                background-color: #E0E0E0;
+                line-height:4em;
+                width: 100%;
+                overflow:hidden;
+            }
+            .wrapper {
+                min-height: 100%;
+                height: auto !important;
+                height: 100%;
+                margin: 0 auto -4em;
+                padding-bottom:5em;
+            }
+
+        script(src='public/js/jquery.min.js')
+        script(src='public/js/bootstrap.min.js')
+
+        link(href="public/material/material-components-web.min.css" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        script(src="public/material/material-components-web.min.js")
+        link(href="public/material/material-override.css" rel="stylesheet")
+
+        script(src="public/js/"+(isDebugMode ? "vue.js" : "vue.min.js"))
+        script(src="public/material/vue-material-design.js")
+        script(src="public/material/optional/v-common-utils.js")
+        script(src="public/js/vue-components/v-login.js")
+        script(src="public/material/optional/v-bootstrap-navbar.js")
+
+        style.
+            table {border-collapse:collapse;border-spacing: 0;}
+            tr, th {margin: 0; padding: 0; border: 0;}
+            th {height:30px;font-weight:normal;text-align:center}
+            td {vertical-align: middle !important;}
+
+        block head
+ 
+    body(style="padding-bottom:10rem;padding-top:0")
+        #common-vue-app
+            v-common-utils(ref="utils")
+        script.
+            let vCommon = new Vue({
+                el: '#common-vue-app',
+                computed:{
+                    utils:function(){return this.$refs.utils}
+                }
+            })
+        .wrapper
+            block navbars
+            .container
+                if isTestInstance
+                    #testInstanceApp
+                            v-mdc-panel(title="Currently using Test instance", type="danger", icon="warning")
+                                p You are currently using test instance of this tool. Replace #[i forge-test] to #[i forge] in the URL to switch to production instance.
+                    script.
+                        new Vue({el: '#testInstanceApp'})
+                block body
+
+        .footer
+            .container
+                p(style="float:left")='Created by me - Page generated in ' + ((new Date()).getTime() - startTime.getTime()) + 'ms'
+                a(href="", target="_blank")
+                    img(style="float:right;margin-top:12px;margin-left:24px;height:38px", src="public/img/resops_logo.png")
+                a(href="", target="_blank")
+                    img(style="float:right;margin-top:12px", src="public/img/logo.png")

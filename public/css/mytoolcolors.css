@@ -1,0 +1,89 @@
+html {
+    --mdc-theme-primary: #257966 !important;
+    --mdc-theme-secondary: #136d38 !important;
+  }
+
+
+
+.navbar-default {
+    background-color: #264f90;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    background-color: #3f9b9f;
+      color: #FFFFFF;
+}
+
+.nav-tabs>li>a:hover {
+    color: #308EE8;
+}
+
+/* Use after bootstrap file to define theme  */
+
+.btn-info {
+    color: #909090 !important;
+    background-color: lightgrey !important;
+    
+}
+.btn-info.active {
+    color: #FFFFFF !important;
+    background-color: #217dbb !important; 
+}
+
+
+.btn-success {
+    color: #909090 !important;
+    background-color: lightgrey !important;
+    
+}
+.btn-success.active {
+    color: #FFFFFF !important;
+    background-color: #128f76 !important; 
+}
+
+a {
+    color: #005EB8;
+}
+a:hover {
+    color: #308EE8;
+}
+
+.navbar {
+    border-radius: 0px !important;
+    margin-bottom: 0px !important;
+}
+.navbar-brand {
+  font-size: 17px;
+  line-height: 21px;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: #30e8a8;
+}
+.navbar-default .navbar-nav>li>.active>a:hover {
+  color: #FFFFFF;
+}
+.navbar-default .navbar-brand:hover {
+  color: #308EE8;
+}
+
+
+.switch.primary-switch label input[type=checkbox]:checked + .lever {
+    background-color: #689DF6;
+}
+.switch.primary-switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #4285F4;
+}
+.switch.default-switch label input[type=checkbox]:checked + .lever {
+    background-color: #4DCCBF;
+}
+.switch.default-switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #2BBBAD;
+}
+.switch.secondary-switch label input[type=checkbox]:checked + .lever {
+    background-color: #C791E2;
+}
+.switch.secondary-switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #a6c;
+}
+.switch.success-switch label input[type=checkbox]:checked + .lever {
+    background-color: #2ACC6C;
+}

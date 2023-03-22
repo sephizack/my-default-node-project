@@ -1,0 +1,64 @@
+extends layouts/base_navbar
+
+block body
+    #app
+        v-mdc-panel(title="What is the goal of this project ?" icon="info")
+            p My project is so cool, it can do:
+            ul
+                li I do not know yet
+                li ...
+            v-mdc-select(key="filter1", label="Demo" width="150px")
+                v-mdc-option(value="")
+                v-mdc-option(value="Value 1") Value 1
+                v-mdc-option(value="An other value") An other value
+            br
+            v-mdc-text(type="datetime-local" icon="schedule" label="" v-model="filters.minStartDateStr")
+            br
+            br
+            v-mdc-button(raised label="Trigger simple notif", icon="save", @click="triggerNotif")
+
+        .mdc-elevation--z4(style="margin-top:20px;background:#ffffff")
+            v-mdc-tab-bar
+                v-mdc-tab(v-model="curtab", tabvalue="tab1", label="My tab 1", icon="filter" v-if="pageType!=='id'")
+                v-mdc-tab(v-model="curtab", tabvalue="tab2", label="A spinner demo", icon="create")
+                v-mdc-tab(v-model="curtab", tabvalue="tab3", label="Prompt Demo", icon="star")
+            .mdc-tab-content(v-if="curtab=='tab1'")
+                p Bonjour
+            .mdc-tab-content(v-if="curtab=='tab2'")
+                p Voici un spinner
+                v-mdc-spinner(scale="0.8")
+            .mdc-tab-content(v-if="curtab=='tab3'")
+                p Voici un switch
+                v-mdc-switch(label="Enable super feature", v-model="isFeatureActivated", style="margin-top:10px")
+                br
+                v-mdc-button(raised label="Open prompt", icon="list", @click="openPrompt")
+        
+
+
+    script.
+        var defaultMinDate = new Date(Date.now()-1000*60*60*24*20)
+        var app = new Vue({
+            el: '#app',
+            data: {
+                curtab: "tab1",
+                isFeatureActivated:false,
+                filters: {
+                    minStartDateStr: defaultMinDate.toISOString().slice(0,-5),
+                },
+            },
+            methods: {
+                triggerNotif: function () {
+                    vCommon.utils.addSimpleNotif("A simple notification", 'success')
+                },
+                openPrompt: function () {
+                    vCommon.utils.$refs.genericPrompt.openPromptContentList(
+                        "Here a generic promt",
+                        "info",
+                        "Here is a list of items",
+                        ["Item 1", "Item 2", "Item 3", "Item 4"],
+                        "",
+                        [{label:"OK"}]
+                    );
+                }
+            }
+        });

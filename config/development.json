@@ -1,0 +1,5 @@
+{
+  "isDebugMode": true,
+  "renderCacheEnabled": false,
+  "logsPath": "./logs"
+}

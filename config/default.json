@@ -1,0 +1,13 @@
+{
+  "webServerName": "My Default Tool",
+  "serverShortName": "mytool",
+  "baseUrl": "/",
+  "startServer": true,
+  "isTestInstance": false,
+  "hostname": "http://localhost",
+  "logsPath": "/usr/src/app/logs",
+  "serverPort": 80,
+  "isDebugMode": false,
+  "renderCacheEnabled": true,
+  "nodePersistStoragePath": "/usr/src/app/node-persist",
+}

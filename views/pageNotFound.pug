@@ -1,0 +1,10 @@
+extends layouts/base_navbar
+
+block body
+    #app
+        v-mdc-panel(title="Invalid URL" type="danger" icon="error")
+            p It seems the URL you try to access is invalid ...
+            p Try finding what you are looking for by navigating on the website manually.
+
+    script.
+        var app = new Vue({el: '#app'})

@@ -1,0 +1,14 @@
+node_default_project:
+  restart: "always"
+  build: .
+  ports:
+    - "80:80"
+  expose:
+    - "80"
+  mem_limit: 2048m
+  environment:
+    - NODE_ENV=development
+  volumes:
+   - my_project_nodepersist:/usr/src/app/node-persist
+   - ./config:/usr/src/app/config
+   - my_project_logs:/usr/src/app/logs

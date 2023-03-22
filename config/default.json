@@ -9,5 +9,5 @@
   "serverPort": 80,
   "isDebugMode": false,
   "renderCacheEnabled": true,
-  "nodePersistStoragePath": "/usr/src/app/node-persist",
+  "nodePersistStoragePath": "/usr/src/app/node-persist"
 }

@@ -19,7 +19,7 @@ block body
 
         .mdc-elevation--z4(style="margin-top:20px;background:#ffffff")
             v-mdc-tab-bar
-                v-mdc-tab(v-model="curtab", tabvalue="tab1", label="My tab 1", icon="filter" v-if="pageType!=='id'")
+                v-mdc-tab(v-model="curtab", tabvalue="tab1", label="My tab 1", icon="filter")
                 v-mdc-tab(v-model="curtab", tabvalue="tab2", label="A spinner demo", icon="create")
                 v-mdc-tab(v-model="curtab", tabvalue="tab3", label="Prompt Demo", icon="star")
             .mdc-tab-content(v-if="curtab=='tab1'")
